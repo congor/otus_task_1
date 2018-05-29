@@ -1,4 +1,4 @@
-#Console analysis application for the most frequent matches among the most frequent verbs for python projects
+# Console analysis application for the most frequent matches among the most frequent verbs for python projects
 
 This is a tutorial work for the second task in the OTUS “Python web-developer” course.
 Link to a task: https://gist.github.com/Melevir/5754a1b553eb11839238e43734d0eb79
