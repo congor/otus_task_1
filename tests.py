@@ -28,7 +28,7 @@ class TestCountVerbsMethods(unittest.TestCase):
     def test_verbs(self):
         list_to_filter = ['give_give', 'timer', 'make', 'get', 'take']
         filtered_list = tested_project.get_verbs(list_to_filter)
-        self.assertEqual(filtered_list, ['give', 'give', 'make', 'get', 'take'])
+        self.assertEqual(filtered_list, ['give', 'make', 'get', 'take'])
         
     def test_list_flat(self):
         complicated_list = [[1, 2, 3], [4, 5], [6]]

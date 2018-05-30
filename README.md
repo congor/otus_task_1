@@ -15,8 +15,9 @@ For example, the result `('take', 5) 2` shows the verb `take` was found `5` time
 - Due to this application is for console usage, results are outputted in console in the form of column, where every string has a construction has mentioned in ` Usage objective`.
 - Due to verbs determination is based on `nltk`-library algorithm, some words having different parts of speech may be recognized as not verbs.
 - The application includes a file for Unit-test and proper testing data for this task.
+- The application considers a context of using every word in functions names and this way determines a proper part of speech that has been applied in these names and takes words have been used only in a verb sense
 
-#User guide
+# User guide
 
 1. Clone or download with extracting this application.
 2. Install required libraries:
@@ -31,7 +32,7 @@ $ pyhon3 projects_functions_verbs.py
 ```
 6. Take results in console.
 
-#Testing options
+# Testing options
 
 1. For internal testing put the folder `test_data` to inside the folder where the application file `projects_functions_verbs.py` is and launch this application the same way has pointed above.
 2. For Unit-test also testing put the folder `test_data` to inside the folder where the application file `projects_functions_verbs.py` is and launch the file `tests.py` the same way has pointed above.
