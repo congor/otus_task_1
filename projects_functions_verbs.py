@@ -55,7 +55,7 @@ def get_verbs(functions_names):
 
 def verbs_from_function_name(function_name):
     words_function_name = function_name.split('_')
-    words_function_name = [word for word in words_function_name if word != '']
+    words_function_name = [word for word in words_function_name if word]
     attached_tags = nltk.pos_tag(words_function_name)
     return [attached_tag[0] for attached_tag in attached_tags if 'VB' in attached_tag[1]]
 
