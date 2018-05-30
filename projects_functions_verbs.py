@@ -54,21 +54,24 @@ def get_verbs(functions_names):
     return make_list_flat(verb_lists)
 
 def verbs_from_function_name(function_name):
-    return [word for word in function_name.split('_') if is_verb(word)]
-
-def is_verb(word):
-    try:
-        pos_info = nltk.pos_tag([word])
-        return pos_info[0][1] == 'VB'        
-    except:
-        return False
+    words_function_name = function_name.split('_')
+    words_function_name = [word for word in words_function_name if word != '']
+    attached_tags = nltk.pos_tag(words_function_name)
+    return [attached_tag[0] for attached_tag in attached_tags if 'VB' in attached_tag[1]]
 
 def get_most_frequent_verbs(verbs, top_size=10):
     return collections.Counter(verbs).most_common(top_size)
 
 def make_list_flat(_list):
-    return sum(_list, [])    
+    return sum(_list, [])
 
+def determ_projects_locations(projects, test_folder):
+    if os.path.isdir(os.path.join(test_folder)):        
+        print('Internal test mode')
+        return [os.path.join(test_folder, project) for project in projects]
+    else:
+        return projects
+    
 if __name__ == '__main__':
     test_folder = 'test_data'
     projects = [
@@ -77,16 +80,14 @@ if __name__ == '__main__':
         'empty'
     ]
 
-    if os.path.isdir(os.path.join(test_folder)):
-        test_mode = True
-        print('Internal test mode')
-    else:
-        test_mode = False
+    projects = determ_projects_locations(projects, test_folder)
 
     verbs_statistics = []
 
     for project in projects:
-        project_path = os.path.join(test_folder if test_mode else None, project)
+        project_path = os.path.join(project)
+        if not os.path.isdir(project_path):
+            print("The project's folder '{}' is absent".format(project))
         files_paths = get_file_paths(project_path)
         files_syntax_nodes = get_syntax_nodes(files_paths)
         functions_names = get_functions_names(files_syntax_nodes)
